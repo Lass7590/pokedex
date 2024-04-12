@@ -1,4 +1,4 @@
-const inputCherche = document.querySelector(".form-group input");
+const inputSearch = document.querySelector(".form-group input");
 const liste = document.querySelector(".liste-poke");
 
 let allPoke = [];
@@ -22,11 +22,6 @@ const types = {
   ghost: "#735797",
   ice: "#96D9D6",
 };
-
-for (let i = 0; i < types.length; i++) {
-  // const element = array[i];
-  console.log(types[i]);
-}
 
 function apiPokemon() {
   fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
@@ -95,8 +90,31 @@ function creerCarte(tab) {
   }
 }
 
+// Implementation de la fonction scroll infinie
+window.addEventListener("scroll", () => {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  // console.log(document.documentElement);
+  console.log(scrollHeight, scrollTop, clientHeight);
+  if (clientHeight + scrollTop >= scrollHeight - 20) {
+    addPoke(6);
+  }
+});
+
+let index = 21;
+
+// Ajout de carte
+function addPoke(nb) {
+  if (index > 151) {
+    return;
+  }
+  const tabCarteAAjouter = allPoke.slice(index, index + nb);
+
+  creerCarte(tabCarteAAjouter);
+  index += nb;
+}
+
 // Animation input and label
-inputCherche.addEventListener("input", (e) => {
+inputSearch.addEventListener("input", (e) => {
   // console.log(e.target.parentNode);
   if (e.target.value !== "") {
     e.target.parentNode.classList.add("active");
