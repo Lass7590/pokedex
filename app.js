@@ -113,6 +113,30 @@ function addPoke(nb) {
   index += nb;
 }
 
+// Implementation de la fonction recherche de Pokemon
+
+inputSearch.addEventListener("keyup", recherche);
+
+function recherche() {
+  if (index < 151) {
+    addPoke(130);
+  }
+  let inputValue, tousLesLi, tousLesTitres, titleValue;
+  inputValue = inputSearch.value.toUpperCase();
+  tousLesLi = document.querySelectorAll("li");
+  tousLesTitres = document.querySelectorAll("li > h5");
+
+  for (let i = 0; i < tousLesLi.length; i++) {
+    titleValue = tousLesTitres[i].innerText;
+    // console.log(tousLesTitres[i].innerText);
+    if (titleValue.toUpperCase().indexOf(inputValue) > -1) {
+      tousLesLi[i].style.display = "flex";
+    } else {
+      tousLesLi[i].style.display = "none";
+    }
+  }
+}
+
 // Animation input and label
 inputSearch.addEventListener("input", (e) => {
   // console.log(e.target.parentNode);

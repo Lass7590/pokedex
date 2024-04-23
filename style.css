@@ -85,6 +85,7 @@ h1 {
 
 .liste-poke li {
   /* color: #f1f1f1; */
+  border-radius: 5px;
   width: 250px;
   height: auto;
   padding: 10px;
