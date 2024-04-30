@@ -1,5 +1,6 @@
 const inputSearch = document.querySelector(".form-group input");
 const liste = document.querySelector(".liste-poke");
+const chargement = document.querySelector(".loader");
 
 let allPoke = [];
 let tabPokeFin = [];
@@ -64,6 +65,7 @@ function detailsPoke(pokemon) {
               })
               .slice(0, 21);
             creerCarte(tabPokeFin);
+            chargement.style.display = "none";
           }
         });
     });
